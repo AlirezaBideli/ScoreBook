@@ -6,7 +6,7 @@ import android.widget.EditText;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import com.aira.scorebook.model.Teacher;
-import com.aira.scorebook.repositories.TeacherRepo;
+import com.aira.scorebook.network.TeacherController;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -41,6 +41,7 @@ public class RegisterTeacher extends AppCompatActivity {
                 mEdtTeacherCode.getText().toString()
         );
         Teacher teacher=new Teacher(name,lname,teacher_code);
-        TeacherRepo.getInstance().insert(teacher);
+        TeacherController controller=new TeacherController();
+        controller.start(teacher);
    }
 }

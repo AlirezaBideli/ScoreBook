@@ -1,94 +1,67 @@
 package com.aira.scorebook.model;
 
-import org.greenrobot.greendao.annotation.Entity;
-import org.greenrobot.greendao.annotation.Id;
-import org.greenrobot.greendao.annotation.Property;
-import org.greenrobot.greendao.annotation.Generated;
+
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
 
 
-@Entity
-public class Teacher extends DbEntity {
+public class Teacher {
 
-    @Id(autoincrement = true)
-    private long id;
 
-    @Property(nameInDb = "firstName")
-    private  String mName;
-    @Property(nameInDb = "lastName")
-    private String mLastName;
-
-    public Teacher(String name, String lastName, int teacherCode) {
-        this.mName = name;
-        this.mLastName = lastName;
-        this.mTeacherCode = teacherCode;
+    public int getId() {
+        return id;
     }
 
-    @Property(nameInDb = "teacherCode")
-    private int mTeacherCode;
-
-    @Generated(hash = 2064733251)
-    public Teacher(long id, String mName, String mLastName, int mTeacherCode) {
+    public void setId(int id) {
         this.id = id;
+    }
+
+    @SerializedName("id")
+    @Expose(serialize = false)
+    public int id;
+    @SerializedName("firstName")
+    @Expose
+    public String mName;
+    @SerializedName("lastName")
+    @Expose
+    public String mLastName;
+    @SerializedName("teacher_code")
+    @Expose
+    public int mTeacherCode;
+
+    public Teacher(String mName, String mLastName, int mTeacherCode) {
         this.mName = mName;
         this.mLastName = mLastName;
         this.mTeacherCode = mTeacherCode;
     }
 
-    @Generated(hash = 1630413260)
-    public Teacher() {
-    }
 
 
-    public long getId() {
-        return this.id;
-    }
-
-
-    public String getName() {
+    public String getmName() {
         return mName;
     }
 
-    public String getLastName() {
-        return mLastName;
-    }
-
-    public int getTeacherCode() {
-        return mTeacherCode;
-    }
-
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-
-    public String getMName() {
-        return this.mName;
-    }
-
-
-    public void setMName(String mName) {
+    public void setmName(String mName) {
         this.mName = mName;
     }
 
-
-    public String getMLastName() {
-        return this.mLastName;
+    public String getmLastName() {
+        return mLastName;
     }
 
-
-    public void setMLastName(String mLastName) {
+    public void setmLastName(String mLastName) {
         this.mLastName = mLastName;
     }
 
-
-    public int getMTeacherCode() {
-        return this.mTeacherCode;
+    public int getmTeacherCode() {
+        return mTeacherCode;
     }
 
-
-    public void setMTeacherCode(int mTeacherCode) {
+    public void setmTeacherCode(int mTeacherCode) {
         this.mTeacherCode = mTeacherCode;
     }
+
+
+
 
 }
