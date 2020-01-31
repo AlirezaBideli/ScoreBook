@@ -1,43 +1,31 @@
 package com.aira.scorebook.network;
 
 import com.aira.scorebook.model.Teacher;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import java.util.concurrent.TimeUnit;
-import okhttp3.OkHttpClient;
+import com.aira.scorebook.tools.MySharedPreferences;
+import com.aira.scorebook.tools.SharedKeys;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 public class TeacherController implements Callback<Teacher> {
 
-    static final String BASE_URL = "http://192.168.43.77/";
 
     public void start(Teacher teacher) {
-        Gson gson = new GsonBuilder()
-                .setLenient()
-                .create();
 
-        final OkHttpClient okHttpClient = new OkHttpClient.Builder()
-                .readTimeout(100, TimeUnit.SECONDS)
-                .connectTimeout(100, TimeUnit.SECONDS)
-                .build();
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create(gson))
-                .client(okHttpClient)
-                .build();
+        Retrofit retrofit = RetrofitInstance.getInstance();
+        TeacherAPI gerritAPI = retrofit.create(TeacherAPI.class);
 
-        GerritAPI gerritAPI = retrofit.create(GerritAPI.class);
+        String userName=teacher.getUserName();
+        String password=teacher.getPassword();
+        String firstName = teacher.getName();
+        String lastName = teacher.getLastName();
+        int teacher_code = teacher.getTeacherCode();
 
-        String firstName = teacher.mName;
-        String lasrName = teacher.mLastName;
-        int teacher_code = teacher.mTeacherCode;
-        Call<Teacher> call = gerritAPI.registerTeacher(firstName,lasrName,teacher_code);
+        Call<Teacher> call = gerritAPI.registerTeacher(userName,password,firstName,
+                lastName, teacher_code);
         call.enqueue(this);
-
     }
 
 
@@ -46,13 +34,23 @@ public class TeacherController implements Callback<Teacher> {
 
         if (response.isSuccessful()) {
             long id = response.body().getId();
+            String firstName=response.body().getName();
+            String lastName=response.body().getLastName();
+            String teacher_code=response.body().getTeacherCode()+"";
+            String userName=response.body().getUserName();
+
+            MySharedPreferences sharedPreferences=MySharedPreferences.getInstance();
+            sharedPreferences.storeData(SharedKeys.TEACHER_ID,id+"");
+            sharedPreferences.storeData(SharedKeys.FIRST_NAME,firstName);
+            sharedPreferences.storeData(SharedKeys.LAST_NAME,lastName);
+            sharedPreferences.storeData(SharedKeys.TEACHER_CODE,teacher_code);
+            sharedPreferences.storeData(SharedKeys.USERNAME,userName);
         }
     }
 
     @Override
     public void onFailure(Call<Teacher> call, Throwable t) {
         t.printStackTrace();
-
     }
 
 

@@ -1,78 +1,62 @@
 package com.aira.scorebook.model;
 
-import org.greenrobot.greendao.annotation.Entity;
-import org.greenrobot.greendao.annotation.Id;
-import org.greenrobot.greendao.annotation.Property;
-import org.greenrobot.greendao.annotation.Generated;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
 
-@Entity
 public class ClassT {
 
-    @Id(autoincrement = true)
+    @Expose(deserialize = false)
     private long id;
-    @Property(nameInDb = "name")
-    private String mName;
-    @Property(nameInDb = "time")
-    private String mTime;
-    @Property(nameInDb = "prCode")
-    private String mPrCode;
 
-    @Property(nameInDb = "teacherId")
+    @SerializedName("name")
+    private String mName;
+    @SerializedName("time")
+    private String mTime;
+    @SerializedName("day_code")
+    private int mDayCode;
+    @SerializedName("presentation_code")
+    private int mPrCode;
+    @SerializedName("teacher_id")
     private long mTeacherId;
 
-    @Generated(hash = 623259007)
-    public ClassT(long id, String mName, String mTime, String mPrCode,
-            long mTeacherId) {
-        this.id = id;
-        this.mName = mName;
-        this.mTime = mTime;
-        this.mPrCode = mPrCode;
-        this.mTeacherId = mTeacherId;
-    }
-
-    @Generated(hash = 1080052045)
-    public ClassT() {
-    }
-
-    public long getId() {
-        return this.id;
+    public ClassT(String name, String time, int dayCode, int prCode, long teacherId) {
+        mName = name;
+        mTime = time;
+        mPrCode = prCode;
+        mTeacherId = teacherId;
+        this.mDayCode = dayCode;
     }
 
     public void setId(long id) {
         this.id = id;
     }
 
-    public String getMName() {
-        return this.mName;
+
+    public long getId() {
+        return id;
     }
 
-    public void setMName(String mName) {
-        this.mName = mName;
+    public String getName() {
+        return mName;
     }
 
-    public String getMTime() {
-        return this.mTime;
+    public String getTime() {
+
+        return mTime;
     }
 
-    public void setMTime(String mTime) {
-        this.mTime = mTime;
+    public int getPrCode() {
+        return mPrCode;
     }
 
-    public String getMPrCode() {
-        return this.mPrCode;
+    public long getTeacherId() {
+        return mTeacherId;
     }
 
-    public void setMPrCode(String mPrCode) {
-        this.mPrCode = mPrCode;
-    }
 
-    public long getMTeacherId() {
-        return this.mTeacherId;
-    }
-
-    public void setMTeacherId(long mTeacherId) {
-        this.mTeacherId = mTeacherId;
+    public int getDayCode() {
+        return mDayCode;
     }
 
 }

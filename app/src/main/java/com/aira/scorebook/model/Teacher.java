@@ -8,58 +8,61 @@ import com.google.gson.annotations.SerializedName;
 public class Teacher {
 
 
+
+    @SerializedName("id")
+    @Expose(serialize = false)
+    private int id;
+    @SerializedName("userName")
+    private String mUserName;
+    @SerializedName("password")
+    private String mPassword;
+    @SerializedName("firstName")
+    @Expose
+    private String mName;
+    @SerializedName("lastName")
+    @Expose
+    private String mLastName;
+    @SerializedName("teacher_code")
+    @Expose
+    private int mTeacherCode;
+
+    public Teacher(String userName,String password,String mName,
+                   String mLastName, int mTeacherCode) {
+        this.mUserName=userName;
+        this.mPassword=password;
+        this.mName = mName;
+        this.mLastName = mLastName;
+        this.mTeacherCode = mTeacherCode;
+    }
+
+
     public int getId() {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public String getUserName() {
+        return mUserName;
     }
 
-    @SerializedName("id")
-    @Expose(serialize = false)
-    public int id;
-    @SerializedName("firstName")
-    @Expose
-    public String mName;
-    @SerializedName("lastName")
-    @Expose
-    public String mLastName;
-    @SerializedName("teacher_code")
-    @Expose
-    public int mTeacherCode;
-
-    public Teacher(String mName, String mLastName, int mTeacherCode) {
-        this.mName = mName;
-        this.mLastName = mLastName;
-        this.mTeacherCode = mTeacherCode;
+    public String getPassword() {
+        return mPassword;
     }
 
-
-
-    public String getmName() {
+    public String getName() {
         return mName;
     }
 
-    public void setmName(String mName) {
-        this.mName = mName;
-    }
-
-    public String getmLastName() {
+    public String getLastName() {
         return mLastName;
     }
 
-    public void setmLastName(String mLastName) {
-        this.mLastName = mLastName;
-    }
-
-    public int getmTeacherCode() {
+    public int getTeacherCode() {
         return mTeacherCode;
     }
 
-    public void setmTeacherCode(int mTeacherCode) {
-        this.mTeacherCode = mTeacherCode;
-    }
+
+
+
 
 
 

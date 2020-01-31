@@ -5,7 +5,7 @@ android {
     buildToolsVersion "29.0.2"
     defaultConfig {
         applicationId "com.aira.scorebook"
-        minSdkVersion 14
+        minSdkVersion 23//changed from 14 to 23 because of andoridx.security (SecureSharedPrefrence)
         targetSdkVersion 26
         versionCode 1
         versionName "1.0"
@@ -41,7 +41,8 @@ dependencies {
     implementation 'com.squareup.retrofit2:retrofit:2.1.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.1.0'
     implementation 'com.google.code.gson:gson:2.6.2'
-
+    implementation "androidx.security:security-crypto:1.0.0-alpha02"
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.2.1'
     implementation 'org.greenrobot:greendao:3.2.2'
 
 }

@@ -1,7 +1,8 @@
-package com.aira.scorebook;
+package com.aira.scorebook.ui.activities;
 
 import android.os.Bundle;
 
+import com.aira.scorebook.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
