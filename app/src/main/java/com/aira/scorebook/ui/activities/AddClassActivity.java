@@ -17,6 +17,7 @@ import com.aira.scorebook.model.ClassT;
 import com.aira.scorebook.network.ClassController;
 import com.aira.scorebook.tools.MySharedPreferences;
 import com.aira.scorebook.tools.SharedKeys;
+import com.google.android.material.textfield.TextInputEditText;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -26,13 +27,13 @@ public class AddClassActivity extends AppCompatActivity {
 
 
     @BindView(R.id.edt_name)
-    EditText mEdtName;
+    TextInputEditText mEdtName;
     @BindView(R.id.edt_class_code)
-    EditText mEdtClassCode;
+    TextInputEditText mEdtClassCode;
     @BindView(R.id.spn_day)
     Spinner mSpnDay;
     @BindView(R.id.tv_time)
-    TextView mTvTime;
+    TextInputEditText mTvTime;
     private String mTime = "";
 
     @Override

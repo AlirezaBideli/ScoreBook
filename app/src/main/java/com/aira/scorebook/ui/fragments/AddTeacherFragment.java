@@ -13,6 +13,8 @@ import androidx.fragment.app.Fragment;
 import com.aira.scorebook.R;
 import com.aira.scorebook.model.Teacher;
 import com.aira.scorebook.network.TeacherController;
+import com.google.android.material.textfield.TextInputEditText;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -23,13 +25,13 @@ public class AddTeacherFragment extends Fragment {
     private static final String PASSWORD_ARG = "password";
     private static final String USERNAME_ARG = "userName";
     @BindView(R.id.edt_name)
-    public EditText mEdtName;
+    public TextInputEditText mEdtName;
     @BindView(R.id.edt_last_name)
-    public EditText mEdtLastName;
+    public TextInputEditText mEdtLastName;
     @BindView(R.id.edt_teacher_code)
-    public EditText mEdtTeacherCode;
+    public TextInputEditText mEdtTeacherCode;
     @BindView(R.id.btn_submit)
-    public Button mBtnSubmit;
+    public TextInputEditText mBtnSubmit;
 
 
     public static AddTeacherFragment newInstance(String usetName,String password) {

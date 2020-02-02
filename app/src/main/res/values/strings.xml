@@ -34,4 +34,7 @@
     <string name="selected_time">زمان انتخابی شما</string>
     <string name="choose_hour">زمان شروع کلاس را انتخاب کنید</string>
     <string name="class_name_error">نام کلاس را وارد کنید</string>
+    <string name="student_add">افزودن دانش آموز</string>
+    <string name="firstName_error">نام را وارد کنید</string>
+    <string name="student_code">شماره دانشجویی</string>
 </resources>

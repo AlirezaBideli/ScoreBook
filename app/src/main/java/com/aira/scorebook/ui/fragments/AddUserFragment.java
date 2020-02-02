@@ -86,12 +86,6 @@ public class AddUserFragment extends Fragment {
                 String userName = mEdtUserName.getText().toString();
                 String password = mEdtPassword.getText().toString();
                 String confirmPassword = mEdtConfirmPassword.getText().toString();
-                if (userName.isEmpty())
-                    mEdtUserName.setError(getString(R.string.userName_error));
-                if (password.isEmpty())
-                    mEdtPassword.setError(getString(R.string.password_error));
-                if (confirmPassword.isEmpty())
-                    mEdtPassword.setError(getString(R.string.confirm_password_error));
 
 
                 TextInputEditText[] fields = {mEdtUserName, mEdtPassword, mEdtConfirmPassword};
